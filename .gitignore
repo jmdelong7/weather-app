@@ -1,0 +1,28 @@
+#Node modules
+node_modules/
+
+#Build output directory
+dist/
+build/
+
+#Development server
+.webpack/
+
+#Environment variables
+.env
+.env.local
+.env.\*
+
+#Cache directories
+.cache/
+.npm/
+
+#IDE specific files
+.vscode/
+.idea/
+_.swp
+_.swo
+
+#OS generated files
+.DS_Store
+Thumbs.db
