@@ -3,9 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta name="description" content="Weather App - The Odin Project" />
+    <title>Weather App</title>
   </head>
   <body>
-    test
+    <header>
+      <div class="title-container">
+        <h1>5 Day Forecast</h1>
+      </div>
+    </header>
+    <section class="search-container">
+      <input type="search" name="search" id="search" placeholder="Seattle" />
+      <button type="submit">S</button>
+    </section>
+    <div class="main">
+      <div class="weather-card">
+        <div class="main-info-container">
+          <div class="conditions dc">
+            <h3 class="conditions-header wh">Conditions:</h3>
+            <p class="conditions-data data" id="curr-conditions">
+              bla bla bal
+            </p>
+          </div>
+          <div class="temp-feelslike">
+            <div class="temp dc">
+              <h3 class="temp-header wh">Temp:</h3>
+              <p class="temp-data data" id="curr-temp">482</p>
+            </div>
+            <div class="feelslike dc">
+              <h3 class="feelslike-header wh">Feels like:</h3>
+              <p class="feelslike-data data" id="curr-feelslike">442</p>
+            </div>
+          </div>
+        </div>
+        <div class="secondary-info-container">
+          <div class="humidity dc">
+            <h3 class="humidity-header wh">Humidity:</h3>
+            <p class="humidity-data data" id="curr-humidity">136</p>
+          </div>
+          <div class="precip dc">
+            <h3 class="precip-header wh">Precipitation:</h3>
+            <p class="precip-data data" id="curr-precip">336</p>
+          </div>
+          <div class="windspeed dc">
+            <h3 class="windspeed-header wh">Windspeed:</h3>
+            <p class="windspeed-data data" id="curr-windspeed">110</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

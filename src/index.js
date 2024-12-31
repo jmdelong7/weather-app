@@ -1,6 +1,7 @@
 // VISUAL_CROSSING_KEY
 // GIPHY_KEY
 // process.env. ^^^
+import './styles.css';
 
 async function weatherSearch(location) {
   const response = await fetch(
@@ -50,4 +51,4 @@ async function getWeatherData(location) {
   return { locationInfo, currentForecast, next5Days };
 }
 
-getWeatherData('Seattle').then((d) => console.log(d));
+getWeatherData('Seattle').then((weatherData) => console.log(weatherData));
