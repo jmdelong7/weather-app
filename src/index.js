@@ -51,4 +51,25 @@ async function getWeatherData(location) {
   return { locationInfo, currentForecast, next5Days };
 }
 
-getWeatherData('Seattle').then((weatherData) => console.log(weatherData));
+async function displayWeatherData(location) {
+  const weatherData = await getWeatherData(location);
+
+  const currEles = {
+    conditionsEle: document.getElementById('curr-conditions'),
+    tempEle: document.getElementById('curr-temp'),
+    feelslikeEle: document.getElementById('curr-feelslike'),
+    humidityEle: document.getElementById('curr-humidity'),
+    precipEle: document.getElementById('curr-precip'),
+    windspeedEle: document.getElementById('curr-windspeed'),
+  };
+
+  currEles.conditionsEle.textContent = weatherData.currentForecast.conditions;
+  currEles.tempEle.textContent = weatherData.currentForecast.temp;
+  currEles.feelslikeEle.textContent = weatherData.currentForecast.feelslike;
+  currEles.humidityEle.textContent = weatherData.currentForecast.humidity;
+  currEles.precipEle.textContent = weatherData.currentForecast.precip;
+  currEles.windspeedEle.textContent = weatherData.currentForecast.windspeed;
+  console.log(weatherData);
+}
+
+displayWeatherData('Bozeman');

@@ -12,20 +12,41 @@
         <h1>5 Day Forecast</h1>
       </div>
     </header>
-    <section class="search-container">
+    <section class="search-sec">
       <input type="search" name="search" id="search" placeholder="Seattle" />
       <button type="submit">S</button>
     </section>
-    <div class="main">
+    <section class="locationinfo-sec">
+      <div class="gen-info">
+        <div class="location">
+          <h2 class="location-long">Bozeman, MT, United States</h2>
+        </div>
+        <div class="location-other sc">
+          <div class="description-container dc">
+            <h3 class="description-header wh"></h3>
+            <p class="description-data data">Similar temperatures continuing with a chance of rain Friday & Saturday.</p>
+          </div>
+          <div class="latitude-container dc">
+            <h3 class="latitude-header wh">Latitude:</h3>
+            <p class="latitude-data data">45.6793</p>
+          </div>
+          <div class="longitude-container dc">
+            <h3 class="longitude-header wh">Longitude:</h3>
+            <p class="longitude-data data">-111.032</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="main-sec">
       <div class="weather-card">
-        <div class="main-info-container">
+        <div class="main-info-container mc">
           <div class="conditions dc">
             <h3 class="conditions-header wh">Conditions:</h3>
             <p class="conditions-data data" id="curr-conditions">
               bla bla bal
             </p>
           </div>
-          <div class="temp-feelslike">
+          <div class="temp-feelslike-container">
             <div class="temp dc">
               <h3 class="temp-header wh">Temp:</h3>
               <p class="temp-data data" id="curr-temp">482</p>
@@ -36,7 +57,7 @@
             </div>
           </div>
         </div>
-        <div class="secondary-info-container">
+        <div class="secondary-info-container sc">
           <div class="humidity dc">
             <h3 class="humidity-header wh">Humidity:</h3>
             <p class="humidity-data data" id="curr-humidity">136</p>

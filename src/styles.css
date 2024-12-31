@@ -98,6 +98,16 @@ body {
   color: var(--secondary-color);
 }
 
+h1,
+.location-long {
+  text-align: center;
+}
+
+.search-sec {
+  display: flex;
+  justify-content: center;
+}
+
 .weather-card {
   display: flex;
   flex-direction: column;
@@ -105,8 +115,8 @@ body {
   max-width: 400px;
 }
 
-.main-info-container,
-.secondary-info-container {
+.mc,
+.sc {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -116,7 +126,7 @@ body {
   flex-direction: column;
 }
 
-.temp-feelslike {
+.temp-feelslike-container {
   display: flex;
 }
 
