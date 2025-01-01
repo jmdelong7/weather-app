@@ -9,69 +9,83 @@
   <body>
     <header>
       <div class="title-container">
-        <h1>5 Day Forecast</h1>
+        <h1>5 Day Forecast&nbsp;&nbsp;</h1><span class="tehe">(with gifs)</span>
       </div>
     </header>
     <section class="search-sec">
-      <input type="search" name="search" id="search" placeholder="Seattle" />
-      <button type="submit">S</button>
+      <form id="searchForm">
+        <input
+          type="search"
+          name="search"
+          id="search"
+          autocomplete="off"
+          placeholder="San Diego, CA"
+        />
+        <button id="submit" type="submit">
+          <svg width="25px" height="" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_15_152)">
+            <circle cx="10.5" cy="10.5" r="6.5" stroke="#000000" stroke-linejoin="round"/>
+            <path d="M19.6464 20.3536C19.8417 20.5488 20.1583 20.5488 20.3536 20.3536C20.5488 20.1583 20.5488 19.8417 20.3536 19.6464L19.6464 20.3536ZM20.3536 19.6464L15.3536 14.6464L14.6464 15.3536L19.6464 20.3536L20.3536 19.6464Z" fill="#000000"/>
+            </g>
+            <defs>
+            <clipPath id="clip0_15_152">
+            <rect width="24" height="24"/>
+            </clipPath>
+            </defs>
+            </svg>
+        </button>
+      </form>
     </section>
-    <section class="locationinfo-sec">
-      <div class="gen-info">
-        <div class="location">
-          <h2 class="location-long">Bozeman, MT, United States</h2>
-        </div>
-        <div class="location-other sc">
-          <div class="description-container dc">
-            <h3 class="description-header wh"></h3>
-            <p class="description-data data">Similar temperatures continuing with a chance of rain Friday & Saturday.</p>
-          </div>
-          <div class="latitude-container dc">
-            <h3 class="latitude-header wh">Latitude:</h3>
-            <p class="latitude-data data">45.6793</p>
-          </div>
-          <div class="longitude-container dc">
-            <h3 class="longitude-header wh">Longitude:</h3>
-            <p class="longitude-data data">-111.032</p>
-          </div>
-        </div>
+    <section class="locationinfo-sec sc">
+      <div class="location">
+        <h2 class="location-long" id="location">Location</h2>
+      </div>
+      <div class="description-container dc">
+        <h3 class="description-header wh"></h3>
+        <p class="description-data data" id="description">
+          Similar temperatures continuing with a chance of rain Friday &
+          Saturday.
+        </p>
       </div>
     </section>
     <section class="main-sec">
       <div class="weather-card">
         <div class="main-info-container mc">
-          <div class="conditions dc">
-            <h3 class="conditions-header wh">Conditions:</h3>
-            <p class="conditions-data data" id="curr-conditions">
-              bla bla bal
-            </p>
-          </div>
-          <div class="temp-feelslike-container">
-            <div class="temp dc">
-              <h3 class="temp-header wh">Temp:</h3>
-              <p class="temp-data data" id="curr-temp">482</p>
+          <div class="gif-frame mf-left" id="gif-frame"></div>
+          <div class="mf-right">
+            <div class="conditions dc">
+              <h3 class="conditions-header wh"></h3>
+              <p class="conditions-data data" id="curr-conditions">
+                bla bla bal
+              </p>
             </div>
-            <div class="feelslike dc">
-              <h3 class="feelslike-header wh">Feels like:</h3>
-              <p class="feelslike-data data" id="curr-feelslike">442</p>
+            <div class="temp-feelslike-container">
+              <div class="temp dc">
+                <h3 class="temp-header wh">Temp:</h3>
+                <p class="temp-data data" id="curr-temp">999.99</p>
+              </div>
+              <div class="feelslike dc">
+                <h3 class="feelslike-header wh">Feels like:</h3>
+                <p class="feelslike-data data" id="curr-feelslike">999.99</p>
+              </div>
             </div>
           </div>
         </div>
         <div class="secondary-info-container sc">
           <div class="humidity dc">
             <h3 class="humidity-header wh">Humidity:</h3>
-            <p class="humidity-data data" id="curr-humidity">136</p>
+            <p class="humidity-data data" id="curr-humidity">999.99</p>
           </div>
           <div class="precip dc">
             <h3 class="precip-header wh">Precipitation:</h3>
-            <p class="precip-data data" id="curr-precip">336</p>
+            <p class="precip-data data" id="curr-precip">999.99</p>
           </div>
           <div class="windspeed dc">
             <h3 class="windspeed-header wh">Windspeed:</h3>
-            <p class="windspeed-data data" id="curr-windspeed">110</p>
+            <p class="windspeed-data data" id="curr-windspeed">999.99</p>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </body>
 </html>
