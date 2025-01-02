@@ -189,7 +189,7 @@ form {
 #description {
   margin: 20px 0;
   width: 600px;
-  text-align: left;
+  text-align: center;
   min-height: 48px;
 }
 
@@ -205,9 +205,15 @@ form {
   text-align: center;
 }
 
-.mc,
-.sc,
 .main-sec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mc,
+.sc {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -260,4 +266,29 @@ form {
 .data {
   color: var(--accent-color);
   font-size: var(--fs-3);
+}
+
+#next5days {
+  width: 500px;
+  margin-top: 48px;
+  border: 1px solid var(--tertiary-color);
+  background-color: transparent;
+  border-radius: 8px;
+  padding: 4px;
+  color: var(--text-primary-color);
+  font-weight: var(--fw-thin);
+}
+
+#next5days:hover {
+  background-color: var(--accent-color);
+  cursor: pointer;
+  box-shadow: 3px 5px 0 rgb(0, 0, 0);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+svg {
+  padding-bottom: 4px;
 }
