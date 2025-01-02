@@ -131,7 +131,7 @@ form {
 }
 
 .locationinfo-sec {
-  margin-top: 80px;
+  margin-top: 64px;
 }
 
 .title-container,
@@ -179,14 +179,30 @@ form {
 .weather-card {
   display: flex;
   flex-direction: column;
-  border: 1px solid orange;
   max-width: 600px;
+  background-color: var(--pre-primary-color);
+  box-shadow: 3px 5px 0 rgb(0, 0, 0);
+  border: none;
+  border-radius: 8px;
+}
+
+#description {
+  margin: 20px 0;
+  width: 600px;
+  text-align: left;
+  min-height: 48px;
 }
 
 #curr-conditions {
   font-size: var(--fs-6);
   font-weight: var(--fw-bold);
-  color: var(--accent-color);
+  color: var(--tertiary-color);
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 4px;
+  text-align: center;
 }
 
 .mc,
@@ -195,6 +211,10 @@ form {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.sc {
+  text-align: center;
 }
 
 .locationinfo-sec,
@@ -219,16 +239,25 @@ form {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-}
-
-.temp-feelslike-container {
-  display: flex;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
 }
 
 .dc {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 12px;
-  gap: 8px;
+  margin: 25px 5px 5px 5px;
+  gap: 4px;
+  width: 100%;
+}
+
+.wh {
+  font-size: var(--fs-4);
+  font-weight: var(--fw-bold);
+}
+
+.data {
+  color: var(--accent-color);
+  font-size: var(--fs-3);
 }

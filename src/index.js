@@ -25,7 +25,6 @@ async function getWeatherData(location) {
     'temp',
     'humidity',
     'precip',
-    'windspeed',
   ];
 
   const curr = data.currentConditions;
@@ -61,15 +60,15 @@ async function displayWeatherData(location) {
     feelslikeEle: document.getElementById('curr-feelslike'),
     humidityEle: document.getElementById('curr-humidity'),
     precipEle: document.getElementById('curr-precip'),
-    windspeedEle: document.getElementById('curr-windspeed'),
   };
 
   currEles.conditionsEle.textContent = weatherData.currentForecast.conditions;
-  currEles.tempEle.textContent = weatherData.currentForecast.temp;
-  currEles.feelslikeEle.textContent = weatherData.currentForecast.feelslike;
-  currEles.humidityEle.textContent = weatherData.currentForecast.humidity;
+  currEles.tempEle.textContent = weatherData.currentForecast.temp + '° F';
+  currEles.feelslikeEle.textContent =
+    weatherData.currentForecast.feelslike + '° F';
+  currEles.humidityEle.textContent =
+    weatherData.currentForecast.humidity + ' %';
   currEles.precipEle.textContent = weatherData.currentForecast.precip;
-  currEles.windspeedEle.textContent = weatherData.currentForecast.windspeed;
 
   const locEles = {
     resolvedAddress: document.getElementById('location'),
