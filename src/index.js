@@ -52,7 +52,7 @@ async function getWeatherData(location) {
   return { locationInfo, currentForecast, next5Days };
 }
 
-async function displayWeatherData(location) {
+async function updateWeatherData(location) {
   const weatherData = await getWeatherData(location);
   createWeatherCard();
 
@@ -111,7 +111,7 @@ async function gifConditionsSearch(conditions) {
 }
 
 async function weatherSearch(searchInput) {
-  const data = await displayWeatherData(searchInput);
+  const data = await updateWeatherData(searchInput);
   gifConditionsSearch(data);
 }
 
@@ -136,20 +136,84 @@ function createWeatherCard() {
   }
 }
 
-// createWeatherCard();
+function displayWeatherData() {
+  const sections = `<section class="locationinfo-sec sc">
+      <div class="location">
+        <h2 class="location-long" id="location">Location</h2>
+      </div>
+      <div class="description-container">
+        <h3 class="description-header wh"></h3>
+        <p class="description-data" id="description">
+          description
+        </p>
+      </div>
+    </section>
+    <section class="main-sec">
+      <div class="weather-card">
+        <div class="main-info-container mc">
+          <div class="gif-frame mf-left" id="gif-frame"></div>
+          <div class="mf-right">
+            <div class="conditions dc">
+              <h3 class="conditions-header wh"></h3>
+              <p class="conditions-data data" id="curr-conditions">
+                conditions
+              </p>
+            </div>
+            <div class="temp-feelslike-container sc">
+              <div class="temp dc">
+                <h3 class="temp-header wh"></h3>
+                <p class="temp-data data" id="curr-temp">temp
+                </p>
+              </div>
+              <div class="feelslike dc">
+                <h3 class="feelslike-header wh">Feels like</h3>
+                <p class="feelslike-data data" id="curr-feelslike">temp
+                </p>
+              </div>
+            </div>
+            <div class="secondary-info-container sc">
+              <div class="humidity dc">
+                <h3 class="humidity-header wh">Humidity</h3>
+                <p class="humidity-data data" id="curr-humidity">percent</p>
+              </div>
+              <div class="precip dc">
+                <h3 class="precip-header wh">Precipitation</h3>
+                <p class="precip-data data" id="curr-precip">precip</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button id="next5days">See Next 5 Days</button>
+      <dialog>
+        <div class="future-weather-cards-container"></div>
+        <div class="close-button-container">
+          <button class="close" id="close">Close</button>
+        </div>
+      </dialog>
+    </section>`;
+
+  const body = document.querySelector('body');
+  let currBody = body.innerHTML;
+  let locationInfo = document.querySelector('.locationinfo-sec');
+  if (locationInfo == undefined) {
+    body.innerHTML = currBody + sections;
+  }
+}
 
 function addListeners() {
   const searchBar = document.getElementById('search');
   document.getElementById('searchForm').addEventListener('submit', (event) => {
     event.preventDefault();
+    displayWeatherData();
+    const modal = document.querySelector('dialog');
+    document.getElementById('next5days').addEventListener('click', () => {
+      modal.showModal();
+    });
+    document.getElementById('close').addEventListener('click', () => {
+      modal.close();
+    });
     weatherSearch(searchBar.value);
-  });
-  const modal = document.querySelector('dialog');
-  document.getElementById('#next5days').addEventListener('click', () => {
-    modal.showModal();
-  });
-  document.getElementById('close').addEventListener('click', () => {
-    modal.close();
   });
 }
 

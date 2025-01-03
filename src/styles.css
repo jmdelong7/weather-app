@@ -347,20 +347,21 @@ svg {
   width: 650px;
 }
 
-dialog {
-  background-color: var(--primary-color);
+dialog[open] {
+  display: block; /* Visible when 'open' attribute is present */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
   box-shadow: 0 0 0 3px rgb(0, 0, 0);
+  background-color: var(--primary-color);
   border: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: flex-end;
-  align-items: center;
-  width: 650px;
   border-radius: 8px;
   padding: 16px;
 }
 
-dialog::backdrop {
-  background-color: var(--primary-color);
+.close-button-container {
+  display: flex;
+  justify-content: flex-end;
 }
