@@ -179,7 +179,7 @@ form {
 .weather-card {
   display: flex;
   flex-direction: column;
-  max-width: 600px;
+  max-width: 650px;
   background-color: var(--pre-primary-color);
   box-shadow: 3px 5px 0 rgb(0, 0, 0);
   border: none;
@@ -188,18 +188,18 @@ form {
 
 #description {
   margin: 20px 0;
-  width: 600px;
+  width: 650px;
   text-align: center;
   min-height: 48px;
 }
 
 #curr-conditions {
-  font-size: var(--fs-6);
+  font-size: var(--fs-5);
   font-weight: var(--fw-bold);
   color: var(--tertiary-color);
-  white-space: nowrap;
+  white-space: wrap;
   width: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
   text-overflow: ellipsis;
   padding: 4px;
   text-align: center;
@@ -217,6 +217,7 @@ form {
   display: flex;
   align-items: center;
   justify-content: center;
+  line-height: 1.75rem;
 }
 
 .sc {
@@ -235,13 +236,13 @@ form {
 
 .mf-right {
   height: 300px;
-  width: 300px;
+  width: 325px;
   flex-wrap: wrap;
 }
 
 .mf-left {
   height: 300px;
-  width: 300px;
+  width: 325px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -260,12 +261,17 @@ form {
 
 .wh {
   font-size: var(--fs-4);
-  font-weight: var(--fw-bold);
+  font-weight: var(--fw-regular);
 }
 
 .data {
   color: var(--accent-color);
-  font-size: var(--fs-3);
+  font-size: var(--fs-4);
+  font-weight: var(--fw-bold);
+}
+
+#curr-temp {
+  font-size: var(--fs-6);
 }
 
 #next5days {
@@ -279,7 +285,8 @@ form {
   font-weight: var(--fw-thin);
 }
 
-#next5days:hover {
+#next5days:hover,
+.close:hover {
   background-color: var(--accent-color);
   cursor: pointer;
   box-shadow: 3px 5px 0 rgb(0, 0, 0);
@@ -291,4 +298,69 @@ button:active {
 
 svg {
   padding-bottom: 4px;
+}
+
+.future-weather-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  color: var(--text-primary-color);
+  background-color: var(--pre-primary-color);
+  box-shadow: 3px 5px 0 rgb(0, 0, 0);
+  border: none;
+  border-radius: 8px;
+  width: 250px;
+}
+
+.future-temp-text {
+  font-size: var(--fs-6);
+}
+
+.future-weather-day-text {
+  color: var(--tertiary-color);
+}
+
+.future-conditions-text {
+  text-align: center;
+}
+
+.close {
+  border: 1px solid var(--tertiary-color);
+  background-color: transparent;
+  border-radius: 8px;
+  padding: 4px;
+  color: var(--text-primary-color);
+  font-weight: var(--fw-thin);
+}
+
+.future-weather-cards-container {
+  background-color: var(--primary-color);
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  width: 650px;
+}
+
+dialog {
+  background-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgb(0, 0, 0);
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: flex-end;
+  align-items: center;
+  width: 650px;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+dialog::backdrop {
+  background-color: var(--primary-color);
 }

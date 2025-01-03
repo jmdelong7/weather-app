@@ -1,6 +1,7 @@
 // VISUAL_CROSSING_KEY
 // GIPHY_KEY
 // process.env. ^^^
+import { format, parseISO } from 'date-fns';
 import './styles.css';
 
 async function fetchWeatherData(location) {
@@ -53,6 +54,7 @@ async function getWeatherData(location) {
 
 async function displayWeatherData(location) {
   const weatherData = await getWeatherData(location);
+  createWeatherCard();
 
   const currEles = {
     conditionsEle: document.getElementById('curr-conditions'),
@@ -79,6 +81,20 @@ async function displayWeatherData(location) {
     weatherData.locationInfo.resolvedAddress;
   locEles.description.textContent = weatherData.locationInfo.description;
 
+  const next5Days = weatherData.next5Days;
+  for (let i = 1; i < 6; i++) {
+    const weatherCard = document.getElementById(`future-card-${i}`);
+    const data = next5Days[`${i}`];
+
+    const day = weatherCard.querySelector('p.future-weather-day-text');
+    const conditions = weatherCard.querySelector('p.future-conditions-text');
+    const temp = weatherCard.querySelector('p.future-temp-text');
+
+    day.textContent = format(parseISO(data.datetime), 'EEEE');
+    conditions.textContent = data.conditions;
+    temp.textContent = data.temp + '° F';
+  }
+
   return weatherData.currentForecast.conditions;
 }
 
@@ -99,15 +115,45 @@ async function weatherSearch(searchInput) {
   gifConditionsSearch(data);
 }
 
-function searchListener() {
+function createWeatherCard() {
+  const container = document.querySelector('.future-weather-cards-container');
+  container.innerHTML = '';
+  let containerInner = container.innerHTML;
+  for (let i = 1; i < 6; i++) {
+    let card = `<div class="future-weather-card" id="future-card-${i}">
+        <div class="future-weather-day">
+          <p class="future-weather-day-text wh">Wednesday</p>
+        </div>
+        <div class="future-conditions">
+          <p class="future-conditions-text wh">bla bla bla bla bla bla bla bla bla</p>
+        </div>
+        <div class="future-temp">
+          <p class="future-temp-text data">999.99</p>
+        </div>
+      </div>`;
+    containerInner += card;
+    container.innerHTML = containerInner;
+  }
+}
+
+// createWeatherCard();
+
+function addListeners() {
   const searchBar = document.getElementById('search');
   document.getElementById('searchForm').addEventListener('submit', (event) => {
     event.preventDefault();
     weatherSearch(searchBar.value);
   });
+  const modal = document.querySelector('dialog');
+  document.getElementById('#next5days').addEventListener('click', () => {
+    modal.showModal();
+  });
+  document.getElementById('close').addEventListener('click', () => {
+    modal.close();
+  });
 }
 
-searchListener();
+addListeners();
 
 // displayWeatherData('san diego');
 // gifConditionsSearch('funny');
