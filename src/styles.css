@@ -85,7 +85,7 @@ svg {
   --primary-color: hsl(var(--hue), 50%, 10%);
   --pre-primary-color: hsl(var(--hue), 50%, 15%);
   --tertiary-color: hsl(calc(160 + 300), 80%, 80%);
-  --accent-color: hsl(calc(160 + 60), 80%, 80%);
+  --accent-color: hsl(220, 50%, 60%);
 
   --text-primary-color: hsl(var(--hue), 50%, 90%);
   --text-secondary-color: hsl(0, 0%, 34%);
@@ -248,6 +248,20 @@ form {
   background-repeat: no-repeat;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
+}
+
+.initial-gif-frame > img {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+}
+
+.initial-gif-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 64px;
 }
 
 .dc {

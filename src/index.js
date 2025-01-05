@@ -136,8 +136,17 @@ function createWeatherCard() {
   }
 }
 
-function displayWeatherData() {
-  const sections = `<section class="locationinfo-sec sc">
+function displayInitSearch() {
+  const locationInfo = document.querySelector('.locationinfo-sec');
+  if (locationInfo !== null) return;
+
+  const body = document.querySelector('body');
+  const initGif = document.getElementById('initial-gif');
+
+  if (initGif) initGif.remove();
+
+  const sections = document.createElement('div');
+  sections.innerHTML = `<section class="locationinfo-sec sc">
       <div class="location">
         <h2 class="location-long" id="location">Location</h2>
       </div>
@@ -193,31 +202,28 @@ function displayWeatherData() {
       </dialog>
     </section>`;
 
-  const body = document.querySelector('body');
-  let currBody = body.innerHTML;
-  let locationInfo = document.querySelector('.locationinfo-sec');
-  if (locationInfo == undefined) {
-    body.innerHTML = currBody + sections;
-  }
+  body.appendChild(sections);
+
+  const modal = document.querySelector('dialog');
+  document.getElementById('next5days').addEventListener('click', () => {
+    modal.showModal();
+  });
+
+  document.getElementById('close').addEventListener('click', () => {
+    modal.close();
+  });
 }
 
-function addListeners() {
+function addSearchListener() {
   const searchBar = document.getElementById('search');
-  document.getElementById('searchForm').addEventListener('submit', (event) => {
+  const searchForm = document.getElementById('searchForm');
+
+  // Attach form listener once
+  searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    displayWeatherData();
-    const modal = document.querySelector('dialog');
-    document.getElementById('next5days').addEventListener('click', () => {
-      modal.showModal();
-    });
-    document.getElementById('close').addEventListener('click', () => {
-      modal.close();
-    });
+    displayInitSearch();
     weatherSearch(searchBar.value);
   });
 }
 
-addListeners();
-
-// displayWeatherData('san diego');
-// gifConditionsSearch('funny');
+addSearchListener();
