@@ -98,6 +98,33 @@ async function updateWeatherData(location) {
   return weatherData.currentForecast.conditions;
 }
 
+function updateTemps() {
+  const tempEle = document.getElementById('curr-temp');
+  const feelslikeEle = document.getElementById('curr-feelslike');
+
+  tempEle.textContent = tempConverter(tempEle.textContent);
+  feelslikeEle.textContent = tempConverter(feelslikeEle.textContent);
+
+  for (let i = 1; i < 6; i++) {
+    const weatherCard = document.getElementById(`future-card-${i}`);
+    const temp = weatherCard.querySelector('p.future-temp-text');
+
+    temp.textContent = tempConverter(temp.textContent);
+  }
+}
+
+function tempConverter(val) {
+  const num = String(val).split('°')[0];
+  const checkbox = document.getElementById('f-to-c');
+  if (checkbox.getAttribute('checked') === 'false') {
+    const celcius = String(Math.round(10 * (num - 32) * (5 / 9)) / 10);
+    return celcius + '° C';
+  } else {
+    const fahrenheit = String(Math.round(10 * (num * (9 / 5) + 32)) / 10);
+    return fahrenheit + '° F';
+  }
+}
+
 async function gifConditionsSearch(conditions) {
   const encoded = encodeURIComponent(conditions);
   const response = await fetch(
@@ -214,11 +241,30 @@ function displayInitSearch() {
   });
 }
 
+function fahrenheitToCelciusBtn() {
+  const fcBtn = document.querySelector('.f-c-icon-border');
+  const fBtn = document.querySelector('.f-c-icon-left');
+  const cBtn = document.querySelector('.f-c-icon-right');
+  const checkbox = document.getElementById('f-to-c');
+
+  fcBtn.addEventListener('click', () => {
+    if (fBtn.classList.contains('accent-color')) {
+      cBtn.classList.add('accent-color');
+      fBtn.classList.remove('accent-color');
+      checkbox.setAttribute('checked', false);
+    } else {
+      cBtn.classList.remove('accent-color');
+      fBtn.classList.add('accent-color');
+      checkbox.setAttribute('checked', true);
+    }
+    updateTemps();
+  });
+}
+
 function addSearchListener() {
   const searchBar = document.getElementById('search');
   const searchForm = document.getElementById('searchForm');
 
-  // Attach form listener once
   searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
     displayInitSearch();
@@ -227,3 +273,4 @@ function addSearchListener() {
 }
 
 addSearchListener();
+fahrenheitToCelciusBtn();
