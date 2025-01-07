@@ -1,6 +1,3 @@
-// VISUAL_CROSSING_KEY
-// GIPHY_KEY
-// process.env. ^^^
 import { format, parseISO } from 'date-fns';
 import './styles.css';
 
@@ -95,11 +92,17 @@ async function updateWeatherData(location) {
     temp.textContent = data.temp + '° F';
   }
 
+  const checked = document.getElementById('f-to-c').getAttribute('checked');
+  if (checked === 'false') {
+    updateTemps();
+  }
+
   return weatherData.currentForecast.conditions;
 }
 
 function updateTemps() {
   const tempEle = document.getElementById('curr-temp');
+  if (tempEle === null) return;
   const feelslikeEle = document.getElementById('curr-feelslike');
 
   tempEle.textContent = tempConverter(tempEle.textContent);
@@ -114,14 +117,15 @@ function updateTemps() {
 }
 
 function tempConverter(val) {
-  const num = String(val).split('°')[0];
-  const checkbox = document.getElementById('f-to-c');
-  if (checkbox.getAttribute('checked') === 'false') {
-    const celcius = String(Math.round(10 * (num - 32) * (5 / 9)) / 10);
-    return celcius + '° C';
-  } else {
+  const checked = document.getElementById('f-to-c').getAttribute('checked');
+  const split = String(val).split('°');
+  const num = Number(split[0]);
+  if (checked === 'true') {
     const fahrenheit = String(Math.round(10 * (num * (9 / 5) + 32)) / 10);
     return fahrenheit + '° F';
+  } else if (checked === 'false') {
+    const celcius = String(Math.round(10 * (num - 32) * (5 / 9)) / 10);
+    return celcius + '° C';
   }
 }
 
@@ -270,6 +274,10 @@ function addSearchListener() {
     displayInitSearch();
     weatherSearch(searchBar.value);
   });
+}
+
+function showSearchError() {
+  const searchError = document.getElementById('search-error');
 }
 
 addSearchListener();

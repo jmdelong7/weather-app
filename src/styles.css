@@ -150,13 +150,15 @@ form {
   margin-top: 32px;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .f-c-container {
   margin-right: 8px;
-  position: relative;
-  height: 24px;
   width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .f-c-icon-border {
@@ -166,7 +168,6 @@ form {
   border-radius: 8px;
   display: flex;
   overflow: hidden;
-  position: absolute;
 }
 
 .fci {
@@ -428,4 +429,8 @@ dialog[open] {
 .close-button-container {
   display: flex;
   justify-content: flex-end;
+}
+
+.error {
+  color: rgb(194, 45, 45);
 }
