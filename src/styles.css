@@ -126,10 +126,6 @@ h1 {
   padding-top: 32px;
 }
 
-form {
-  margin-top: 32px;
-}
-
 .locationinfo-sec {
   margin-top: 64px;
 }
@@ -147,6 +143,60 @@ form {
 form {
   display: flex;
   justify-content: center;
+}
+
+.search-sec {
+  display: flex;
+  margin-top: 32px;
+  align-items: center;
+  justify-content: center;
+}
+
+.f-c-container {
+  margin-right: 8px;
+  position: relative;
+  height: 24px;
+  width: 50px;
+}
+
+.f-c-icon-border {
+  height: 24px;
+  width: 50px;
+  border: 1px solid black;
+  border-radius: 8px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+}
+
+.fci {
+  height: 24px;
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-1);
+}
+
+.f-c-icon-left {
+  border-right: 1px solid black;
+  cursor: pointer;
+}
+
+.f-c-icon-right {
+  border-left: 1px solid black;
+  cursor: pointer;
+}
+
+#f-to-c {
+  width: 50px;
+  height: 24px;
+  display: none;
+}
+
+.accent-color {
+  background-color: var(--accent-color);
 }
 
 #search {
