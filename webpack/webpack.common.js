@@ -10,11 +10,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
-    new Dotenv()
+    new Dotenv(),
   ],
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
     clean: true,
   },
   module: {
@@ -27,13 +27,13 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'fonts/[name][ext]'
-        }
+          filename: 'fonts/[name][ext]',
+        },
       },
       {
         test: /\.html$/i,
-        loader: "html-loader",
-      }      
+        loader: 'html-loader',
+      },
     ],
   },
 };
