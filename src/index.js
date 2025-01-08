@@ -2,16 +2,36 @@ import { format, parseISO } from 'date-fns';
 import './styles.css';
 
 async function fetchWeatherData(location) {
-  const encoded = encodeURIComponent(location);
-  const response = await fetch(
-    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${encoded}?key=${process.env.VISUAL_CROSSING_KEY}`,
-    { mode: 'cors' }
-  );
-  return await response.json();
+  try {
+    const encoded = encodeURIComponent(location);
+    const response = await fetch(
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${encoded}?key=${process.env.VISUAL_CROSSING_KEY}`,
+      { mode: 'cors' }
+    );
+
+    if (!response.ok) {
+      console.log('Error @ fetchWeatherData:', response);
+      showSearchError();
+      return null;
+    }
+
+    hideError();
+    return await response.json();
+  } catch (error) {
+    console.log('Error @ fetchWeatherData:', error);
+    showSearchError();
+    return null;
+  }
 }
 
 async function getWeatherData(location) {
   const data = await fetchWeatherData(location);
+
+  if (!data) {
+    console.log('Error @ getWeatherData:', data);
+    showSearchError();
+    return null;
+  }
 
   const { resolvedAddress, description, latitude, longitude } = data;
   const locationInfo = { resolvedAddress, description, latitude, longitude };
@@ -51,6 +71,11 @@ async function getWeatherData(location) {
 
 async function updateWeatherData(location) {
   const weatherData = await getWeatherData(location);
+  if (!weatherData) {
+    console.log('Error @ weatherData:', weatherData);
+    showSearchError();
+    return null;
+  }
   createWeatherCard();
 
   const currEles = {
@@ -278,6 +303,12 @@ function addSearchListener() {
 
 function showSearchError() {
   const searchError = document.getElementById('search-error');
+  searchError.classList.remove('hide-error');
+}
+
+function hideError() {
+  const searchError = document.getElementById('search-error');
+  searchError.classList.add('hide-error');
 }
 
 addSearchListener();

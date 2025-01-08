@@ -431,6 +431,11 @@ dialog[open] {
   justify-content: flex-end;
 }
 
-.error {
+#search-error {
+  margin-top: 16px;
   color: rgb(194, 45, 45);
+}
+
+.hide-error {
+  display: none;
 }
